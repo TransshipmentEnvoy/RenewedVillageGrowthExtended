@@ -128,7 +128,7 @@ function MainClass::Start()
         if (! GSGameSettings.GetValue("town_growth_rate") ) {
             GSLog.Error("You must set town growth in advanced setting to something other than None. This script is now exiting!");
             this.story_editor = StoryEditor();
-            this.story_editor.CreateStoryBook([], 0, InitError.TOWN_GROWTH_RATE, null);
+            this.story_editor.CreateStoryBook([], 0, InitError.TOWN_GROWTH_RATE, null, null);
             return;
         }
     }
