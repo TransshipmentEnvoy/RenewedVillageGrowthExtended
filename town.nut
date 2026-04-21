@@ -34,7 +34,8 @@ class GoalTown
         /* If there isn't saved data for the towns, we
          * initialize them. Otherwise, we load saved data.
          */
-        if (!load_town_data || this.id >= ::TownDataTable.len()) {
+        local has_saved_town_data = load_town_data && ::TownDataTable != null && ::TownDataTable.rawin(this.id);
+        if (!has_saved_town_data) {
             this.sign_id = -1;
             this.contributor = -1;
             this.max_population = GSTown.GetPopulation(this.id);
