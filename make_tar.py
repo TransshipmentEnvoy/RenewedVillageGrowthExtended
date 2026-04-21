@@ -50,6 +50,9 @@ copy2('readme.txt', tmp_dir)
 copy2('changelog.txt', tmp_dir)
 copytree('lang', os.path.join(tmp_dir, 'lang'))
 
+for directory in ["dep", "algo", "pathfinder", "roadbuilder"]:
+    copytree(directory, os.path.join(tmp_dir, directory))
+
 with tarfile.open(tar_name, "w:") as tar_handle:
     for root, dirs, files in os.walk(tmp_dir):
         for file in files:
