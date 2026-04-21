@@ -572,8 +572,9 @@ function MainClass::Save()
 function MainClass::Load(version, saved_data)
 {
     Log.Info("Loading data...", Log.LVL_INFO);
+    local saved_version = saved_data.rawin("save_version") ? saved_data.save_version : "missing";
     // Loading town data. Only load data if the savegame version matches.
-    if ((saved_data.rawin("save_version") && saved_data.save_version == this.current_save_version)) {
+    if (saved_data.rawin("save_version") && saved_data.save_version == this.current_save_version) {
         this.load_saved_data = true;
         ::SettingsTable.use_town_sign <- saved_data.use_town_sign;
         ::SettingsTable.randomization <- saved_data.randomization;
@@ -609,7 +610,7 @@ function MainClass::Load(version, saved_data)
         }
     }
     else {
-        Log.Info("Save data format doesn't match with current version (saved " + saved_data.save_version + " vs current " + this.current_save_version + "). Resetting.", Log.LVL_INFO);
+        Log.Info("Save data format doesn't match with current version (saved " + saved_version + " vs current " + this.current_save_version + "). Resetting.", Log.LVL_INFO);
     }
 }
 
